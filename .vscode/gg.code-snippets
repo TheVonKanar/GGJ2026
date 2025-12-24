@@ -1,0 +1,134 @@
+{
+    "pd": {
+        "scope": "lua",
+        "prefix": "pd",
+        "description": "Local alias for 'playdate'",
+        "body": [
+            "local pd <const> = playdate",
+        ],
+    },
+    "gfx": {
+        "scope": "lua",
+        "prefix": "gfx",
+        "description": "Local alias for 'playdate.graphics'",
+        "body": [
+            "local gfx <const> = playdate.graphics",
+        ],
+    },
+    "geo": {
+        "scope": "lua",
+        "prefix": "geo",
+        "description": "Local alias for 'playdate.geometry'",
+        "body": [
+            "local geo <const> = playdate.geometry",
+        ],
+    },
+    "newcomp": {
+        "scope": "lua",
+        "prefix": "newcomp",
+        "description": "Boilerplate for a new Component file.",
+        "body": [
+            "---@class ComponentSet",
+            "---@field $1 $1",
+            "",
+            "---@class ${1:ComponentName} : Component",
+            "$1 = class(\"$1\").extends(Component) or $1",
+            "${1/(.*)/${1:/upcase}/} = $1.className",
+            "",
+            "function $1:init()",
+            "\t$1.super.init(self)",
+            "end",
+            "",
+            "function $1:__tostring()",
+            "\treturn ${1/(.*)/${1:/upcase}/}",
+            "end",
+            "",
+            "---@param entityId integer",
+            "---@return $1",
+            "function $1.get(entityId)",
+            "\treturn World:getComponent(entityId, ${1/(.*)/${1:/upcase}/})",
+            "end",
+        ],
+    },
+    "newsys": {
+        "scope": "lua",
+        "prefix": "newsys",
+        "description": "Boilerplate for a new System file.",
+        "body": [
+            "---@class ${1:SystemName} : System",
+            "$1 = class(\"$1\").extends(System) or $1",
+            "",
+            "function $1:init(pass)",
+            "\t$1.super.init(self, pass)",
+            "end"
+        ],
+    },
+    "newmanager": {
+        "scope": "lua",
+        "prefix": "newmanager",
+        "description": "Boilerplate for a new Manager file.",
+        "body": [
+            "---@class ${1:name}",
+            "$1 = {}",
+            "",
+            "function $1:init()",
+            "end",
+            "",
+            "function $1:update()",
+            "\t$0",
+            "end",
+        ],
+    },
+    "sets": {
+        "scope": "lua",
+        "prefix": "sets",
+        "description": "Write a query to get component sets for all relevant entities.",
+        "body": [
+            "local ${1:ids}, ${2:sets} = World:getComponentSets({ $0 })",
+            "for _, set in ipairs($2) do",
+            "",
+            "end"
+        ]
+    },
+    "set": {
+        "scope": "lua",
+        "prefix": "set",
+        "description": "Write a query to get a component set of a specific entity.",
+        "body": [
+            "local ${1:set} = World:getComponentSet($2, { $0 })",
+        ]
+    },
+    "update": {
+        "scope": "lua",
+        "prefix": "update",
+        "description": "Override update function of a class",
+        "body": [
+            "function ${1:Class}:update()",
+            "\t$1.super.update(self)",
+            "\t$0",
+            "end"
+        ]
+    },
+    "load": {
+        "scope": "lua",
+        "prefix": "load",
+        "description": "Override load function of a class",
+        "body": [
+            "function ${1:Class}:load()",
+            "\t$1.super.load(self)",
+            "\t$0",
+            "end"
+        ]
+    },
+    "unload": {
+        "scope": "lua",
+        "prefix": "unload",
+        "description": "Override unload function of a class",
+        "body": [
+            "function ${1:Class}:unload()",
+            "\t$1.super.unload(self)",
+            "\t$0",
+            "end"
+        ]
+    }
+}
