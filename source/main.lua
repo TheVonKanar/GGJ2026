@@ -170,7 +170,11 @@ function pd.update()
    if focusedRow2 and focusedRow2 > 0 and focusedRow2 <= #rows then
       rows[focusedRow2].isFocused = false
    end
-   focusedRow2 = math.floor((cellHeight * 5 - gridY) / cellHeight)
+   if mask.size[2] > 1 then
+      focusedRow2 = math.floor((cellHeight * 5 - gridY) / cellHeight)
+   else
+      focusedRow2 = -1
+   end
    if focusedRow2 and focusedRow2 > 0 and focusedRow2 <= #rows then
       rows[focusedRow2].isFocused = true
    end
@@ -213,18 +217,6 @@ function pd.update()
    end
 
    --- GRID MANAGEMENT ---
-   -- if gridY > oldGridY then
-   --    local delta = math.ceil((gridY - oldGridY) / cellHeight)
-   --    for i = 1, delta do
-   --       table.insert(rows, 1, createRow())
-   --       rawGridY = rawGridY - cellHeight
-   --       gridY = gridY - cellHeight
-   --    end
-   --    if #rows > maxRows then
-   --       for i = 1, #rows - maxRows do
-   --          table.remove(rows)
-   --       end
-   --    end
    if gridY < oldGridY then
       local delta = math.ceil((oldGridY - gridY) / cellHeight)
       for i = 1, delta do
