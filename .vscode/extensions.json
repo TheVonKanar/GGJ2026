@@ -3,6 +3,5 @@
     "recommendations": [
         "sumneko.lua",
         "midouest.playdate-debug",
-        "AykutSarac.jsoncrack-vscode",
     ]
 }

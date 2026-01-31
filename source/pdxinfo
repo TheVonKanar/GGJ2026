@@ -1,6 +1,6 @@
-name=PECS Template
+name=SIRTET
 author=TheVonKanar
-description=Edit this!
+description=Use Tetris shapes to decode the Ergol language and translate this famous speech!
 bundleID=
 version=1.0.0
 buildNumber=1

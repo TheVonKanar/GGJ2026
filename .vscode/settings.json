@@ -4,9 +4,6 @@
     // The Playdate Lua runtime uses "import" instead of "require"
     "Lua.diagnostics.globals": [
         "import",
-        "typeof",
-        "log",
-        "random"
     ],
     // Sumneko Lua type definition doesn't support callbacks/overrides yet,
     // so do this to make playdate.update() override not complain as much
